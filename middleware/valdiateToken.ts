@@ -25,7 +25,9 @@ const validateToken: RequestHandler = async (req: any, res, next) => {
         throw new Error("User is not authorized or token is missing");
       }
     }
-  } catch (error) {}
+  } catch (error) {
+    next(error);
+  }
 };
 
 export default validateToken;
