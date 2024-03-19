@@ -65,7 +65,10 @@ export const loginUser: RequestHandler = async (req, res, next) => {
         process.env.ACCESS_TOKEN_SECRET || "12345",
         { expiresIn: "15m" }
       );
+
       res.status(200).json({ accessToken });
+    } else {
+      res.status(400).json({ message: "Invalid password or email" });
     }
   } catch (error) {
     next(error);
