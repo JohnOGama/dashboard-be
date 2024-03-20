@@ -2,6 +2,7 @@ import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
 import auth from "./routes/auth";
 import post from "./routes/post";
+import website from "./routes/website";
 import morgan from "morgan";
 
 const app = express();
@@ -12,6 +13,7 @@ app.use(morgan("dev"));
 
 app.use("/api/auth", auth);
 app.use("/api/post", post);
+app.use("/api/website", website);
 
 app.use((req, res, next) => {
   next(Error("Endpoint not found"));
